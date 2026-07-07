@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <title>Navi's PC Cafe</title>
 <meta name="robots" content="noindex">
-<script>location.replace('https://navipcshop.com/' + location.search + location.hash);</script>
+<script>
+// Map old GitHub Pages paths to their new homes, preserving query + hash
+// (old promo-email unsubscribe links and buyer bookmarks land here).
+(function () {
+  var p = location.pathname, target;
+  if (p.indexOf('/natpc-admin') === 0) {
+    target = 'https://admin.navipcshop.com' + p.replace(/^\/natpc-admin\/?/, '/');
+  } else {
+    target = 'https://navipcshop.com' + p.replace(/^\/natpc-shop\/?/, '/');
+  }
+  target = target.replace(/\/index\.html$/, '/');
+  location.replace(target + location.search + location.hash);
+})();
+</script>
 <noscript><meta http-equiv="refresh" content="0;url=https://navipcshop.com/"></noscript>
 <style>body{font-family:sans-serif;text-align:center;padding:48px 20px;color:#5c4a52;background:#fdf3f6}a{color:#d16a8a}</style>
 </head>
